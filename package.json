@@ -5,6 +5,7 @@
   "description": "example a11y component using react",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint src/**.(tsx | ts)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^17.0.3",
+    "eslint": "^8.23.0",
+    "prettier": "^2.7.1"
   }
 }
