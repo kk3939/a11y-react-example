@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "a11y-react-example",
+  "version": "1.0.0",
+  "description": "example a11y component using react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kk3939/a11y-react-example.git"
+  },
+  "author": "kyo9bo <kyo51310@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kk3939/a11y-react-example/issues"
+  },
+  "homepage": "https://github.com/kk3939/a11y-react-example#readme"
+}
