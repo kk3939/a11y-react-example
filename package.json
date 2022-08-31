@@ -3,9 +3,9 @@
   "name": "a11y-react-example",
   "version": "1.0.0",
   "description": "example a11y component using react",
-  "main": "index.js",
+  "module": "lib/index.js",
   "scripts": {
-    "lint": "eslint src/**.(tsx | ts)",
+    "lint": "eslint 'src/**.(tsx | ts)'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,7 +24,9 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^17.0.3",
+    "@tsconfig/recommended": "^1.0.1",
     "eslint": "^8.23.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.2"
   }
 }
