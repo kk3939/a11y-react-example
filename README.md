@@ -3,9 +3,9 @@ This is the example project of accessible component. By reference to [WAI-ARIA ã
 
 
 ## storybook
-We host the storybook on chromatic.
+host the storybook on chromatic.
 
-[You can check from here.](https://<branch>--6310803f81145a6ce553941f.chromatic.com)
+[You can check from here.](https://main--6310803f81145a6ce553941f.chromatic.com)
 
 ## license
 [W3C SOFTWARE AND DOCUMENT NOTICE AND LICENSE](https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document).
