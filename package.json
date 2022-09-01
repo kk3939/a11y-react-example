@@ -9,7 +9,8 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.8.0",
     "eslint": "^8.23.0",
     "eslint-plugin-storybook": "^0.6.4",
     "prettier": "^2.7.1",
