@@ -2,6 +2,7 @@ name: Chromatic
 on: push
     
 jobs:
+
   chromatic-deploy:
     runs-on: ubuntu-latest
     steps:
