@@ -1,4 +1,4 @@
 # a11y-react-example
-This is the example project of accessible component. Based on [WAI-ARIA オーサリング・プラクティス 1.1 ](https://waic.jp/docs/2019/NOTE-wai-aria-practices-1.1-20190207/)(Here is [License](https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document)), I implemented component with [React](https://github.com/facebook/react/).
+This is the example project of accessible component. By reference to [WAI-ARIA オーサリング・プラクティス 1.1 ](https://waic.jp/docs/2019/NOTE-wai-aria-practices-1.1-20190207/)(Here is [License](https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document)), I implemented component with [React](https://github.com/facebook/react/).
 
 
