@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Accordion } from "./Accordion";
+import { Accordion } from ".";
 import readme from "./README.md";
 
 export default {
