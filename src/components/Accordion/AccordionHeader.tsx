@@ -22,6 +22,7 @@ export const AccordionHeader: React.FC<Props> = ({
         type="button"
         aria-controls={ariaControls}
         id={id}
+        aria-expanded={openSection.includes(ariaControls)}
         onClick={() => {
           if (openSection.includes(ariaControls)) {
             const newOpenSection = openSection.filter(
