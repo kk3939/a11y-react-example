@@ -4,10 +4,8 @@ module.exports = {
   ],
   addons: [
     "storybook-readme",
-    "@storybook/addon-links",
+    "@storybook/addon-a11y",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-a11y"
   ],
   framework: "@storybook/react",
   core: {
