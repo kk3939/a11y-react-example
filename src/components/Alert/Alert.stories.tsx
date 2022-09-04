@@ -19,7 +19,7 @@ export const Base: ComponentStory<typeof Alert> = () => {
     <div>
       <button
         type="button"
-        id="trigger"
+        id="trigger-alert"
         onClick={() => setOpen(true)}
         style={{ marginBottom: "5px" }}
       >
