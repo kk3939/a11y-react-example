@@ -3,7 +3,7 @@
 
 https://www.w3.org/WAI/ARIA/apg/example-index/accordion/accordion.html
 
-## point
+## Point
 コンポーネントの呼び出し元で、展開されているsectionのstateを宣言します。
 
 ```tsx
