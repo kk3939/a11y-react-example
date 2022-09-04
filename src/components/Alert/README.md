@@ -1,4 +1,5 @@
 # Alert
+<<<<<<< HEAD
 以下のページを参考にしました。
 
 https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html
@@ -15,3 +16,5 @@ https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html
 - aria-atomic
   - 更新の際に、更新箇所のみ通知するか変更箇所含むブロック全体を通知するかどうかを設定する。
   - 真偽値
+=======
+>>>>>>> d1094f9 (add: Alert component)

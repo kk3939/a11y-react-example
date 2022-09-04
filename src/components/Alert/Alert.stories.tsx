@@ -19,7 +19,11 @@ export const Base: ComponentStory<typeof Alert> = () => {
     <div>
       <button
         type="button"
+<<<<<<< HEAD
         id="trigger-alert"
+=======
+        id="trigger"
+>>>>>>> d1094f9 (add: Alert component)
         onClick={() => setOpen(true)}
         style={{ marginBottom: "5px" }}
       >
