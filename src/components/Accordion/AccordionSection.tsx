@@ -2,19 +2,26 @@ import React from "react";
 import styled from "styled-components";
 
 type Props = {
-  contentNum: "1" | "2" | "3";
-  opened: boolean;
+  id: string;
+  ariaLabeledBy: string;
+  children: React.ReactNode;
+  openSection: string[];
 };
 
-export const AccordionSection: React.FC<Props> = ({ contentNum, opened }) => {
+export const AccordionSection: React.FC<Props> = ({
+  id,
+  ariaLabeledBy,
+  children,
+  openSection,
+}) => {
   return (
     <StyledSection
-      id={`section${contentNum}`}
+      id={id}
       role="region"
-      aria-labelledby={`accordion${contentNum}`}
-      hidden={!opened}
+      aria-labelledby={ariaLabeledBy}
+      hidden={!openSection.includes(id)}
     >
-      <span>section {contentNum}</span>
+      {children}
     </StyledSection>
   );
 };

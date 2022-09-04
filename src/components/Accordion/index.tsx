@@ -1,17 +1,58 @@
-import React from "react";
-import { AccordionContainer } from "./AccordionContainer";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-export type ExpandedSection = "1" | "2" | "3" | "none";
+import { AccordionSection } from "./AccordionSection";
+import { AccordionHeader } from "./AccordionHeader";
 
 export const Accordion: React.FC = () => {
-  const array: Array<"1" | "2" | "3"> = ["1", "2", "3"];
+  const [openSection, setOpenSection] = useState<string[]>([]);
 
   return (
     <AccordionWrapper>
-      {array.map((contentNum, i) => {
-        return <AccordionContainer key={i} contentNum={contentNum} />;
-      })}
+      <AccordionHeader
+        setOpenSection={setOpenSection}
+        id="header1"
+        openSection={openSection}
+        ariaControls="section1"
+      >
+        <p>header1</p>
+      </AccordionHeader>
+      <AccordionSection
+        id="section1"
+        ariaLabeledBy="header1"
+        openSection={openSection}
+      >
+        <p>section1</p>
+      </AccordionSection>
+      <AccordionHeader
+        setOpenSection={setOpenSection}
+        id="header2"
+        openSection={openSection}
+        ariaControls="section2"
+      >
+        <p>header2</p>
+      </AccordionHeader>
+      <AccordionSection
+        id="section2"
+        ariaLabeledBy="header2"
+        openSection={openSection}
+      >
+        <p>section2</p>
+      </AccordionSection>
+      <AccordionHeader
+        setOpenSection={setOpenSection}
+        id="header3"
+        openSection={openSection}
+        ariaControls="section3"
+      >
+        <p>header3</p>
+      </AccordionHeader>
+      <AccordionSection
+        id="section3"
+        ariaLabeledBy="header3"
+        openSection={openSection}
+      >
+        <p>section3</p>
+      </AccordionSection>
     </AccordionWrapper>
   );
 };

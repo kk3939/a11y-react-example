@@ -2,31 +2,45 @@ import React from "react";
 import styled from "styled-components";
 
 type Props = {
-  contentNum: "1" | "2" | "3";
-  opened: boolean;
-  setOpened: React.Dispatch<boolean>;
+  id: string;
+  ariaControls: string;
+  children: React.ReactNode;
+  openSection: string[];
+  setOpenSection: React.Dispatch<string[]>;
 };
 
 export const AccordionHeader: React.FC<Props> = ({
-  contentNum,
-  opened,
-  setOpened,
+  setOpenSection,
+  ariaControls,
+  id,
+  children,
+  openSection,
 }) => {
   return (
-    <StyledHeader contentNum={contentNum}>
+    <StyledHeader>
       <StyledButton
         type="button"
-        aria-controls={`section${contentNum}`}
-        id={`accordion${contentNum}`}
-        onClick={() => setOpened(!opened)}
+        aria-controls={ariaControls}
+        id={id}
+        onClick={() => {
+          if (openSection.includes(ariaControls)) {
+            const newOpenSection = openSection.filter(
+              (section) => section !== ariaControls
+            );
+            setOpenSection(newOpenSection);
+            return;
+          }
+          const newOpenSection = [...openSection, ariaControls];
+          setOpenSection(newOpenSection);
+        }}
       >
-        <span>header {contentNum}</span>
+        {children}
       </StyledButton>
     </StyledHeader>
   );
 };
 
-const StyledHeader = styled.h3<{ contentNum: Props["contentNum"] }>`
+const StyledHeader = styled.h3`
   padding: 0.3rem;
   margin: 0;
   margin-top: -1px;
