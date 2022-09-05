@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Alert } from ".";
+import { AlertDialog } from ".";
 import readme from "./README.md";
 
 export default {
-  title: "Alert",
-  component: Alert,
+  title: "AlertDialog",
+  component: AlertDialog,
   parameters: {
     readme: {
       sidebar: readme,
     },
   },
-} as ComponentMeta<typeof Alert>;
+} as ComponentMeta<typeof AlertDialog>;
 
-export const Base: ComponentStory<typeof Alert> = () => {
+export const Base: ComponentStory<typeof AlertDialog> = () => {
   const [open, setOpen] = useState(false);
   return (
     <div>
@@ -25,9 +25,7 @@ export const Base: ComponentStory<typeof Alert> = () => {
       >
         trigger Alert
       </button>
-      <Alert open={open}>
-        <p>alert</p>
-      </Alert>
+      <AlertDialog open={open} setOpen={setOpen} />
     </div>
   );
 };
