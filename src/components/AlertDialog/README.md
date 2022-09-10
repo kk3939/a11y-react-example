@@ -1,7 +1,5 @@
 # AlertDialog
-以下のページを参考にしました。
-
-https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html
+This software or document includes material copied from or derived from [Alert Dialog Example | APG | WAI | W3C](https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/alertdialog.html). Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
 
 ## point
 ### focus

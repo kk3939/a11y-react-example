@@ -1,7 +1,5 @@
 # Alert
-以下のページを参考にしました。
-
-https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html
+This software or document includes material copied from or derived from [Alert Example | APG | WAI | W3C](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html). Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
 
 ## Point
 `role="alert"`要素はスクリーンリーダーが即座に読み上げを開始します。`role="alert"`は`aria-live="assertive"`と`aria-atomic="true"`を設定したときと同じ設定になります。
