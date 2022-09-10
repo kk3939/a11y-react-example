@@ -1,0 +1,25 @@
+/* 疑似要素周りのCSSがstyled-componentsでうまく当てられなかったので、cssファイルで代用しています。 */
+.breadcrumb {
+  background-color: aliceblue;
+  border: 1px solid #c3d3e1;
+}
+
+ol {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+}
+
+/* emは親要素のfont-sizeを基準にする */
+/* remはルートであるhtml要素のfont-sizeを基準にする */
+/* 疑似要素の中身をcontentで指定 */
+li + li::before {
+  display: inline-block;
+  margin: 0 0.5rem;
+  transform: rotate(0.05turn);
+  border-right: 0.1rem solid;
+  height: 0.8rem;
+  content: "";
+}
