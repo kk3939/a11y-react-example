@@ -4,18 +4,18 @@
   border: 1px solid #c3d3e1;
 }
 
-ol {
+.breadcrumb-ol {
   list-style: none;
 }
 
-li {
+.breadcrumb-list {
   display: inline-block;
 }
 
 /* emは親要素のfont-sizeを基準にする */
 /* remはルートであるhtml要素のfont-sizeを基準にする */
 /* 疑似要素の中身をcontentで指定 */
-li + li::before {
+.breadcrumb-list + li::before {
   display: inline-block;
   margin: 0 0.5rem;
   transform: rotate(0.05turn);

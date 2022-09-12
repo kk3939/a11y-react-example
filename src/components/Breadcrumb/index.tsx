@@ -22,7 +22,7 @@ export const Breadcrumb: React.FC<Props> = ({ pages }) => {
 
   return (
     <nav aria-label="Breadcrumb" className="breadcrumb">
-      <ol>
+      <ol className="breadcrumb-ol">
         {pages.map((page, i) => {
           const listOverrideProps = createOverrideProps(page.isCurrent, {
             "aria-current": "page",
@@ -35,7 +35,7 @@ export const Breadcrumb: React.FC<Props> = ({ pages }) => {
             },
           });
           return (
-            <li key={i} {...listOverrideProps}>
+            <li className="breadcrumb-list" key={i} {...listOverrideProps}>
               <a href={page.link} {...anchorOverrideProps}>
                 {page.name}
               </a>
