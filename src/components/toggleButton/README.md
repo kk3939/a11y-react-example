@@ -3,7 +3,7 @@ This software or document includes material copied from or derived from [Button 
 
 
 ## Point
-`role=button`を指定することで、divなどでもボタンということをスクリーンリーダーに伝えられる。
+`role=button`を指定することで、divなどでもボタンということをスクリーンリーダーに伝えられます。
 
 https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/button_role
 
@@ -11,21 +11,22 @@ https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/button_role
 
 ```tsx
 const EnterAndSpaceFunc = useCallback(
-  (event: KeyboardEvent) => {
-    if (event.key === "Enter" || event.code === "Space") {
-      setOn(!on);
-    }
-  },
-  [on, setOn]
-);
+    (event: KeyboardEvent) => {
+      if (event.key === "Enter" || event.code === "Space") {
+        setOn(!on);
+      }
+    },
+    [on, setOn]
+  );
 
-useEffect(() => {
-  document.addEventListener("keydown", EnterAndSpaceFunc);
-  return () => {
-    document.removeEventListener("keydown", EnterAndSpaceFunc);
-  };
-}, [EnterAndSpaceFunc]);
+  useEffect(() => {
+    const element = buttonRef.current;
+    element && element.addEventListener("keydown", EnterAndSpaceFunc);
+    return () => {
+      element && element.removeEventListener("keydown", EnterAndSpaceFunc);
+    };
+  }, [EnterAndSpaceFunc]);
 
 ```
 
-※tabIndexでフォーカスを受け取れる必要があるのに加えて、aria-pressedを使ってToggleButtonであることを明示する必要がある。また、buttonタグを使っていればそれはすぐにできるので、理由がない限りはbuttonタグを使うこと。
+※tabIndexでフォーカスを受け取れる必要があるのに加えて、aria-pressedを使ってToggleButtonであることを明示べきです。また、buttonタグを使っていればそれはすぐにできるので、理由がない限りはbuttonタグを使うこと。

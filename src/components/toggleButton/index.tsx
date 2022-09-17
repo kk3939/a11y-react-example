@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -7,7 +7,8 @@ type Props = {
 };
 
 export const ToggleButton: React.FC<Props> = ({ on, setOn }) => {
-  // hooksに切り出してもいいかも
+  // 今回はdivであえてボタンを作成するのでDivElement
+  const buttonRef = useRef<HTMLDivElement | null>(null);
   const EnterAndSpaceFunc = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Enter" || event.code === "Space") {
@@ -18,14 +19,16 @@ export const ToggleButton: React.FC<Props> = ({ on, setOn }) => {
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", EnterAndSpaceFunc);
+    const element = buttonRef.current;
+    element && element.addEventListener("keydown", EnterAndSpaceFunc);
     return () => {
-      document.removeEventListener("keydown", EnterAndSpaceFunc);
+      element && element.removeEventListener("keydown", EnterAndSpaceFunc);
     };
   }, [EnterAndSpaceFunc]);
 
   return (
     <StyledButton
+      ref={buttonRef}
       role="button"
       tabIndex={0}
       aria-pressed={on}
