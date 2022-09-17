@@ -1,38 +1,46 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { CheckBoxesProps } from ".";
 
 type Props = {
   index: number;
-  checkBoxes: Array<{ checked: boolean; text: string }>;
+  checkFunction: (index: Props["index"]) => void;
   checkBox: { checked: boolean; text: string };
-  onClick: React.Dispatch<Array<{ checked: boolean; text: string }>>;
 };
 
 export const CheckBox: React.FC<Props> = ({
   index,
   checkBox,
-  checkBoxes,
-  onClick,
+  checkFunction,
 }) => {
+  const checkboxRef = useRef<HTMLDivElement | null>(null);
+  const checkFunctionSpaceKey = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        checkFunction(index);
+      }
+    },
+    [checkFunction, index]
+  );
+
+  useEffect(() => {
+    const element = checkboxRef.current;
+    element && element.addEventListener("keydown", checkFunctionSpaceKey);
+    return () => {
+      element && element.removeEventListener("keydown", checkFunctionSpaceKey);
+    };
+  }, [checkFunctionSpaceKey]);
+
   return (
     <StyledLi key={index}>
       <StyledCheckBox
+        ref={checkboxRef}
         checked={checkBox.checked}
         role="checkbox"
         aria-checked={checkBox.checked}
         tabIndex={0}
         onClick={() => {
-          const newCheckBoxes = checkBoxes.map((c, i) => {
-            if (i === index) {
-              return {
-                checked: !checkBox.checked,
-                text: c.text,
-              };
-            }
-            return c;
-          });
-          onClick(newCheckBoxes);
+          checkFunction(index);
         }}
       >
         {checkBox.text}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import { CheckBox } from "./CheckBox";
 
@@ -11,6 +11,22 @@ export const CheckBoxes: React.FC<CheckBoxesProps> = ({
   checkBoxes,
   onClick,
 }) => {
+  const checkFunction = useCallback(
+    (index: number) => {
+      const newCheckBoxes = checkBoxes.map((c, i) => {
+        if (i === index) {
+          return {
+            checked: !c.checked,
+            text: c.text,
+          };
+        }
+        return c;
+      });
+      onClick(newCheckBoxes);
+    },
+    [checkBoxes, onClick]
+  );
+
   return (
     <div>
       <h3 id="checkBoxes">CheckBoxes</h3>
@@ -21,9 +37,8 @@ export const CheckBoxes: React.FC<CheckBoxesProps> = ({
               <CheckBox
                 key={index}
                 index={index}
-                checkBoxes={checkBoxes}
                 checkBox={checkBox}
-                onClick={onClick}
+                checkFunction={checkFunction}
               />
             );
           })}
