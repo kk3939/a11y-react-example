@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
+import { CheckBox } from "./CheckBox";
 
-type Props = {
+export type CheckBoxesProps = {
   checkBoxes: Array<{ checked: boolean; text: string }>;
   onClick: React.Dispatch<Array<{ checked: boolean; text: string }>>;
 };
 
-export const CheckBoxes: React.FC<Props> = ({ checkBoxes, onClick }) => {
+export const CheckBoxes: React.FC<CheckBoxesProps> = ({
+  checkBoxes,
+  onClick,
+}) => {
+  const checkFunction = useCallback(
+    (index: number) => {
+      const newCheckBoxes = checkBoxes.map((c, i) => {
+        if (i === index) {
+          return {
+            checked: !c.checked,
+            text: c.text,
+          };
+        }
+        return c;
+      });
+      onClick(newCheckBoxes);
+    },
+    [checkBoxes, onClick]
+  );
+
   return (
     <div>
       <h3 id="checkBoxes">CheckBoxes</h3>
@@ -14,29 +34,12 @@ export const CheckBoxes: React.FC<Props> = ({ checkBoxes, onClick }) => {
         <StyledUl className="checkboxesUl">
           {checkBoxes.map((checkBox, index) => {
             return (
-              // TODO:コンポーネント切り出して、Space enterで操作できるようにする。
-              <StyledLi key={index}>
-                <StyledCheckBox
-                  checked={checkBox.checked}
-                  role="checkbox"
-                  aria-checked={checkBox.checked}
-                  tabIndex={0}
-                  onClick={() => {
-                    const newCheckBoxes = checkBoxes.map((c, i) => {
-                      if (i === index) {
-                        return {
-                          checked: !checkBox.checked,
-                          text: c.text,
-                        };
-                      }
-                      return c;
-                    });
-                    onClick(newCheckBoxes);
-                  }}
-                >
-                  {checkBox.text}
-                </StyledCheckBox>
-              </StyledLi>
+              <CheckBox
+                key={index}
+                index={index}
+                checkBox={checkBox}
+                checkFunction={checkFunction}
+              />
             );
           })}
         </StyledUl>
@@ -49,17 +52,4 @@ const StyledUl = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`;
-
-const StyledLi = styled.li`
-  padding: 0.5rem;
-`;
-
-const StyledCheckBox = styled.div<{
-  checked: Props["checkBoxes"][number]["checked"];
-}>`
-  &:before {
-    margin-right 2px;
-    content: "${(props) => (props.checked ? "✅" : "◽️")}";
-  }
 `;
