@@ -3,29 +3,47 @@ This software or document includes material copied from or derived from [Alert D
 
 ## point
 ### focus
-フォーカスをダイアログ内に限定させるために、ダミーのコンポーネントを用意して[tabIndex](https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/tabindex)を設定しました。0は順次キーボード操作でフォーカスを受け取れ、-1だとJSなどでフォーカスを受け取れることをしまします。
+フォーカスをダイアログ内に限定させるために、ダミーのコンポーネントを用意してrefを設定しました。
 
-また、refと関数をコンポーネントに設定することで、focus操作を制御することができます。
+※詳しい挙動は本体を確認してください。（あえてファイルを一つにまとめています）
 
 ```tsx
-  const dialogWrapperRef = useRef<HTMLDivElement | null>(null);
   const openTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const dialogWrapperRef = useRef<HTMLDivElement | null>(null);
+  const firstButtonRef = useRef<HTMLButtonElement | null>(null);
+  const lastButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const focusDialog = useCallback(() => {
-    openTriggerRef.current = document.activeElement as HTMLButtonElement;
-    dialogWrapperRef && dialogWrapperRef.current?.focus();
-  }, []);
+  const escKeyHandler = useCallback(
+    (event: KeyboardEvent) => {
+      //  "Esc" IE/Edge specific value
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   useEffect(() => {
     const body = document.body;
+    const dialogWrapperRefCurrent = dialogWrapperRef.current;
+    // Escの処理追加
+    dialogWrapperRefCurrent &&
+      dialogWrapperRefCurrent.addEventListener("keydown", escKeyHandler);
+
     if (open) {
       body.style.overflow = "hidden";
-      focusDialog();
+      openTriggerRef.current = document.activeElement as HTMLButtonElement;
+      const firstButtonRefCurrent = firstButtonRef.current;
+      firstButtonRefCurrent && firstButtonRefCurrent.focus();
     } else {
       body.style.overflow = "";
       openTriggerRef && openTriggerRef.current?.focus();
     }
-  }, [focusDialog, open]);
+    return () => {
+      dialogWrapperRefCurrent &&
+        dialogWrapperRefCurrent.removeEventListener("keydown", escKeyHandler);
+    };
+  }, [escKeyHandler, open]);
 ```
 
 ### aria attribute
