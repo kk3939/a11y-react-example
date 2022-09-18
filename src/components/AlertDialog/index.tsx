@@ -7,32 +7,58 @@ type Props = {
 };
 
 export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
-  const dialogWrapperRef = useRef<HTMLDivElement | null>(null);
   const openTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const dialogWrapperRef = useRef<HTMLDivElement | null>(null);
+  const firstButtonRef = useRef<HTMLButtonElement | null>(null);
+  const lastButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const focusDialog = useCallback(() => {
-    openTriggerRef.current = document.activeElement as HTMLButtonElement;
-    dialogWrapperRef && dialogWrapperRef.current?.focus();
-  }, []);
+  const escKeyHandler = useCallback(
+    (event: KeyboardEvent) => {
+      //  "Esc"はIEとedgeの値で、今回は外している
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    },
+    [setOpen]
+  );
 
   useEffect(() => {
     const body = document.body;
+    const dialogWrapperRefCurrent = dialogWrapperRef.current;
+    // Escの処理追加
+    dialogWrapperRefCurrent &&
+      dialogWrapperRefCurrent.addEventListener("keydown", escKeyHandler);
+
     if (open) {
       body.style.overflow = "hidden";
-      focusDialog();
+      openTriggerRef.current = document.activeElement as HTMLButtonElement;
+      const firstButtonRefCurrent = firstButtonRef.current;
+      firstButtonRefCurrent && firstButtonRefCurrent.focus();
     } else {
       body.style.overflow = "";
       openTriggerRef && openTriggerRef.current?.focus();
     }
-  }, [focusDialog, open]);
+    return () => {
+      dialogWrapperRefCurrent &&
+        dialogWrapperRefCurrent.removeEventListener("keydown", escKeyHandler);
+    };
+  }, [escKeyHandler, open]);
 
   return (
     <>
       <StyledOverlay open={open} />
+      <div
+        tabIndex={open ? 0 : -1}
+        id="dummy-dialog-pre"
+        role="button"
+        onFocus={() => {
+          const lastEle = lastButtonRef.current;
+          lastEle && lastEle.focus();
+        }}
+      />
       <StyledDialogWrapper
-        open={open}
         ref={dialogWrapperRef}
-        tabIndex={-1}
+        open={open}
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="dialog_label"
@@ -42,6 +68,7 @@ export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
           <h2 id="dialog_label">alert dialog</h2>
           <p id="dialog_desc">please click button.</p>
           <StyledButton
+            ref={firstButtonRef}
             type="button"
             buttonType="yes"
             onClick={() => setOpen(false)}
@@ -49,6 +76,7 @@ export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
             Yes
           </StyledButton>
           <StyledButton
+            ref={lastButtonRef}
             type="button"
             buttonType="close"
             onClick={() => setOpen(false)}
@@ -59,9 +87,12 @@ export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
       </StyledDialogWrapper>
       <div
         tabIndex={open ? 0 : -1}
-        id="dummy-dialog"
+        id="dummy-dialog-next"
         role="button"
-        onFocus={() => focusDialog()}
+        onFocus={() => {
+          const firstButtonRefCurrent = firstButtonRef.current;
+          firstButtonRefCurrent && firstButtonRefCurrent.focus();
+        }}
       />
     </>
   );
