@@ -3,11 +3,11 @@ This software or document includes material copied from or derived from [Button 
 
 
 ## Point
-`role=button`を指定することで、divなどでもボタンということをスクリーンリーダーに伝えられます。
+If specify `role=button`, you can notice that this element is not div but button to screen reader.
 
 https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/button_role
 
-ただしその際には、Enterやspaceを使ってボタンをアクティブ、非アクティブにできる必要がある。
+However, you should add a key operation to activate/deactivate the button with Enter and space.
 
 ```tsx
 const EnterAndSpaceFunc = useCallback(
@@ -29,4 +29,5 @@ const EnterAndSpaceFunc = useCallback(
 
 ```
 
-※tabIndexでフォーカスを受け取れる必要があるのに加えて、aria-pressedを使ってToggleButtonであることを明示べきです。また、buttonタグを使っていればそれはすぐにできるので、理由がない限りはbuttonタグを使うこと。
+
+※You designate toggleButton with aria-pressed and tabindex to receive a focus. Button tag contain these attribute, so use button tag unless you have clear reason.

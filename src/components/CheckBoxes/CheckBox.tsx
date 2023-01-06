@@ -57,7 +57,7 @@ const StyledCheckBox = styled.div<{
   checked: CheckBoxesProps["checkBoxes"][number]["checked"];
 }>`
   &:before {
-    margin-right 2px;
+    margin-right: 2px;
     content: "${(props) => (props.checked ? "✅" : "◽️")}";
   }
 `;

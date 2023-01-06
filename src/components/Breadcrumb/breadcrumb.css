@@ -1,4 +1,4 @@
-/* 疑似要素周りのCSSがstyled-componentsでうまく当てられなかったので、cssファイルで代用しています。 */
+/* To respond dummy element, create CSS file. */
 .breadcrumb {
   background-color: aliceblue;
   border: 1px solid #c3d3e1;
@@ -12,9 +12,6 @@
   display: inline-block;
 }
 
-/* emは親要素のfont-sizeを基準にする */
-/* remはルートであるhtml要素のfont-sizeを基準にする */
-/* 疑似要素の中身をcontentで指定 */
 .breadcrumb-list + li::before {
   display: inline-block;
   margin: 0 0.5rem;

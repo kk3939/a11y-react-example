@@ -2,14 +2,14 @@
 This software or document includes material copied from or derived from [Alert Example | APG | WAI | W3C](https://www.w3.org/WAI/ARIA/apg/example-index/alert/alert.html). Copyright © 2022 W3C® (MIT, ERCIM, Keio, Beihang).
 
 ## Point
-`role="alert"`要素はスクリーンリーダーが即座に読み上げを開始します。`role="alert"`は`aria-live="assertive"`と`aria-atomic="true"`を設定したときと同じ設定になります。
+Screen reader read immediately if the element has `role="alert"`. `role="alert"` is as same as setting of `aria-live="assertive"` and `aria-atomic="true"`.
 
 - aria-live
-  - 更新された際にユーザーに通知させるタイミングを指定できます。
-  - 設定できる値
-    - off：更新されてもユーザーに通知しない。
-    - polite：現在の読み上げの終了や入力終了後に通知する。
-    - assertive：即座に通知する。
+  - When updated, you can specify timing of notice to user.
+  - available value
+    - off：no notice when updated
+    - polite：notice if current reading finished
+    - assertive：notice immediately.
 - aria-atomic
-  - 更新の際に、更新箇所のみ通知するか変更箇所含むブロック全体を通知するかどうかを設定する。
-  - 真偽値
+  - When updated, notice whether only where updated or whole block.
+  - boolean

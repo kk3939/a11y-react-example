@@ -7,7 +7,6 @@ type Props = {
 };
 
 export const ToggleButton: React.FC<Props> = ({ on, setOn }) => {
-  // 今回はdivであえてボタンを作成するのでDivElement
   const buttonRef = useRef<HTMLDivElement | null>(null);
   const EnterAndSpaceFunc = useCallback(
     (event: KeyboardEvent) => {

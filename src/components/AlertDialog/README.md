@@ -3,9 +3,9 @@ This software or document includes material copied from or derived from [Alert D
 
 ## point
 ### focus
-フォーカスをダイアログ内に限定させるために、ダミーのコンポーネントを用意してrefを設定しました。
+To focus only dialog element, create dummy component and set ref to it.
 
-※詳しい挙動は本体を確認してください。（あえてファイルを一つにまとめています）
+※If you want to know the detail implementation, please see the component file.
 
 ```tsx
   const openTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -50,9 +50,9 @@ This software or document includes material copied from or derived from [Alert D
 - role="alertdialog"
   - https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/Roles/alertdialog_role
 - aria-modal="true"
-  - モーダルだということをスクリーンリーダーユーザーに対して通知できる。
+  - you can notice that the element is modal to screen reader.
   - https://accessible-usable.net/2021/06/entry_210606.html
 - aria-labelledby="dialog_label"
-  - モーダルのラベル
+  - label of modal
 - aria-describedby="dialog_desc"
-  - モーダルの詳細
+  - detail of modal

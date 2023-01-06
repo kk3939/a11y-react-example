@@ -4,10 +4,10 @@ This software or document includes material copied from or derived from [Breadcr
 
 ## point
 ### CSS
-CSSは全てインラインブロック要素にして余白などの調整をしやすくしています。また、疑似要素を作成して、border-rightでスラッシュを表現しています。
+All of the element's display is inline-block to style margin and so on. And, Creating dummy element, slash is expressed with `border-right`.
 
 ### aria attribute
 - aria-label="Breadcrumb"
-  - パンクずリストをナビゲーションに対して表現
+  - Breadcrumb navigation
 - aria-current="page"
-  - 今のページを指定
+  - specify current status.

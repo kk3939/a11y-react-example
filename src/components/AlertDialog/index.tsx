@@ -14,7 +14,7 @@ export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
 
   const escKeyHandler = useCallback(
     (event: KeyboardEvent) => {
-      //  "Esc"はIEとedgeの値で、今回は外している
+      //  not respond to IE and Edge
       if (event.key === "Escape") {
         setOpen(false);
       }
@@ -25,7 +25,7 @@ export const AlertDialog: React.FC<Props> = ({ open, setOpen }) => {
   useEffect(() => {
     const body = document.body;
     const dialogWrapperRefCurrent = dialogWrapperRef.current;
-    // Escの処理追加
+
     dialogWrapperRefCurrent &&
       dialogWrapperRefCurrent.addEventListener("keydown", escKeyHandler);
 
